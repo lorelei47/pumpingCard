@@ -18,6 +18,7 @@ const CardPool = (function() {
         this.getCardPools = function(num) {
             //TODO
         }
+        this.init.apply(this, arguments);
     }
     const _pushToBuffer = function(cardArray) {
         if (!Array.isArray(cardArray)) {

@@ -8,6 +8,7 @@ body {
     background-image: radial-gradient( circle farthest-corner at 23.1% 64.6%, rgba(129, 125, 254, 1) 0%, rgba(111, 167, 254, 1) 90%);
     height: 100vh;
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
 }
@@ -16,6 +17,7 @@ body {
     display: flex;
     height: 80vh;
     width: 90vw;
+    max-width: 1400px;
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
@@ -29,9 +31,10 @@ body {
     height: 50%;
     position: relative;
     display: flex;
+    transition: all .5s ease-in-out;
     justify-content: center;
     align-items: center;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     perspective: 1000px;
 }
 
@@ -75,15 +78,71 @@ body {
     transform: rotatey(0deg);
 } */
 
+.pumpBtn {
+    height: 10vh;
+    min-width: 10rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .pump {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     text-align: center;
     color: rgba(255, 255, 255, 1);
     font-family: Helvetica, Arial;
     width: 3rem;
     height: 1rem;
-    /* border: 1px solid rgba(101, 204, 184, 1); */
+    line-height: 1rem;
+    cursor: pointer;
     border-radius: 20px;
-    box-shadow: 1px 1px 5px rgba(101, 204, 184, 1);
-    background-image: linear-gradient( 111.4deg, rgba(122, 192, 233, 1) 18.8%, rgba(4, 161, 255, 1) 100.2%);
+    box-shadow: 1px 1px 0px rgba(4, 161, 255, 1);
+    background-image: radial-gradient( circle 800px at 48.9% -25.3%, rgba(84, 214, 247, 0.98) 0%, rgba(247, 246, 246, 1.01) 98.5%);
+}
+
+.pump:hover {
+    background: rgba(4, 161, 255, 1);
+    color: rgba(128, 128, 128, 1);
+}
+
+@keyframes shadowWaveOrange {
+    0% {
+        box-shadow: 0 0 0.6rem .2rem rgba(255, 129, 0, 0.99);
+    }
+    50% {
+        box-shadow: 0 0 0.6rem .5rem rgba(255, 129, 0, 0.99);
+    }
+    100% {
+        box-shadow: 0 0 0.6rem .2rem rgba(255, 129, 0, 0.99);
+    }
+}
+
+@keyframes shadowWaveRed {
+    0% {
+        box-shadow: 0 0 0.6rem .2rem red;
+    }
+    50% {
+        box-shadow: 0 0 0.6rem .5rem red;
+    }
+    100% {
+        box-shadow: 0 0 0.6rem .2rem red;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .box {
+        width: 80vw;
+        height: 90vh;
+    }
+    .card-container {
+        width: 33%;
+        height: 20%;
+    }
+    .cover,
+    .back {
+        width: 60%;
+    }
+    .pumpBtn {
+        height: 5vh;
+    }
 }
