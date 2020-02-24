@@ -7,10 +7,34 @@ body {
     margin: 0;
     background-image: radial-gradient( circle farthest-corner at 23.1% 64.6%, rgba(129, 125, 254, 1) 0%, rgba(111, 167, 254, 1) 90%);
     height: 100vh;
+    position: relative;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
+}
+
+.show {
+    min-width: 15rem;
+    min-height: 21rem;
+    background: rgba(255, 255, 255, 1);
+    position: absolute;
+    border-radius: .4rem;
+    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .18);
+    opacity: 0;
+    z-index: 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.mask {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 1);
+    position: absolute;
+    opacity: 0;
+    z-index: 2;
+    display: none;
 }
 
 .box {
@@ -22,8 +46,9 @@ body {
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
-    font-family: Helvetica, Arial;
-    color: #fff
+    font-family: Helvetzica, Arial;
+    color: #fff;
+    z-index: 1;
 }
 
 .card-container {
@@ -105,6 +130,18 @@ body {
     color: rgba(128, 128, 128, 1);
 }
 
+@keyframes shadowWaveBlue {
+    0% {
+        box-shadow: 0 0 .6rem .2rem rgba(255, 255, 255, 1);
+    }
+    50% {
+        box-shadow: 0 0 .6rem .3rem rgba(255, 255, 255, 1);
+    }
+    100% {
+        box-shadow: 0 0 .6rem .2rem rgba(255, 255, 255, 1);
+    }
+}
+
 @keyframes shadowWaveOrange {
     0% {
         box-shadow: 0 0 0.6rem .2rem rgba(255, 129, 0, 0.99);
@@ -145,5 +182,9 @@ body {
     }
     .pumpBtn {
         height: 5vh;
+    }
+    .show {
+        min-width: 10rem;
+        min-height: 15rem;
     }
 }

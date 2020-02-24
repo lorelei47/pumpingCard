@@ -23,6 +23,7 @@
         let item = document.getElementsByClassName('card-container');
         for (let z = 0; z < item.length; z++) {
             item[z].addEventListener("click", function() {
+                enlargeCardEvent(this);
                 setLevelShadow(this);
                 this.querySelector('.cover').style.transform = 'rotatey(180deg)';
                 this.querySelector('.back').style.transform = 'rotatey(0deg)';
@@ -60,9 +61,43 @@
                 that.querySelector('.back').style.animation = "shadowWaveOrange 2s ease-in-out infinite";
                 break;
             case "3":
-                that.querySelector('.back').style.boxShadow = "0 0 .6rem .2rem rgba(255,255,255,1)";
+                that.querySelector('.back').style.animation = "shadowWaveBlue 10s ease-in-out infinite";
                 break;
         }
+    }
+
+    function enlargeCardEvent(that) {
+        let showView = document.querySelector('.show');
+        let maskView = document.querySelector('.mask');
+        that.querySelector('.back').onclick = function(e) {
+            showView.style.opacity = "1";
+            showView.style.zIndex = "3";
+            showView.style.backgroundImage = this.style.backgroundImage;
+            showView.style.animation = this.style.animation;
+            maskView.style.opacity = "0.5"
+            maskView.style.display = "block";
+            stopBubble(e);
+            document.onclick = function() {
+                showView.style.opacity = "0";
+                showView.style.zIndex = "0";
+                maskView.style.opacity = "0.5"
+                maskView.style.display = 'none';　　　　　　
+                document.onclick = null;　
+            }
+        };
+        showView.onclick = function(event) {
+            //只阻止了向上冒泡，而没有阻止向下捕获，所以点击con的内部对象时，仍然可以执行这个函数
+            stopBubble(event);
+        };
+        //阻止冒泡函数
+        function stopBubble(e) {
+            if (e && e.stopPropagation) {
+                e.stopPropagation(); //w3c
+            } else {
+                window.event.cancelBubble = true; //IE
+            }
+        }
+
     }
 
     //添加css规则
