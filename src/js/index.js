@@ -16,7 +16,7 @@
         let nodeList = box.querySelectorAll('.back');
         for (let i = 0, len = nodeList.length; i < len; i++) {
             let cardId = cp.getRandomCardId();
-            nodeList[i].style.backgroundImage = "url('../card/" + cardId + ".jpg')";
+            nodeList[i].style.backgroundImage = "url('src/card/" + cardId + ".jpg')";
             let index = Cards.findIndex(item => item.id == cardId);
             nodeList[i].setAttribute("level", Cards[index].level);
         }
