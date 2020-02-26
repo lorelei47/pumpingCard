@@ -5,7 +5,6 @@ html {
 body {
     padding: 0;
     margin: 0;
-    background-image: radial-gradient( circle farthest-corner at 23.1% 64.6%, rgba(129, 125, 254, 1) 0%, rgba(111, 167, 254, 1) 90%);
     height: 100vh;
     position: relative;
     display: flex;
@@ -14,27 +13,74 @@ body {
     align-items: center;
 }
 
-.show {
-    min-width: 15rem;
-    min-height: 21rem;
-    background: rgba(255, 255, 255, 1);
+.hamburger-container {
     position: absolute;
-    border-radius: .4rem;
-    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .18);
-    opacity: 0;
-    z-index: 0;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    height: 1.5rem;
+    width: 100vw;
+    background: rgb(19, 113, 100);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
 }
 
-.mask {
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 1);
-    position: absolute;
-    opacity: 0;
-    z-index: 2;
+.hamburger-container div {
+    height: 100%;
+    color: rgba(255, 255, 255, 1);
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .7rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.hamburger-container div:hover {
+    background-color: rgb(50, 80, 54);
+}
+
+.hamburger-container div:active {
+    background-color: rgb(140, 224, 123);
+}
+
+.pump-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
     display: none;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient( circle farthest-corner at 23.1% 64.6%, rgba(129, 125, 254, 1) 0%, rgba(111, 167, 254, 1) 90%);
+}
+
+.map-container {
+    width: 100%;
+    padding-top: 5rem;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: linear-gradient( 0deg, rgba(247, 247, 247, 1) 23.8%, rgba(252, 221, 221, 1) 92%);
+}
+
+.map-box {
+    display: flex;
+    height: 100vh;
+    width: 90vw;
+    max-width: 1400px;
+    flex-flow: row wrap;
+    z-index: 1;
+}
+
+.collect-container {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-image: linear-gradient( 109.6deg, rgba(204, 228, 247, 1) 11.2%, rgba(237, 246, 250, 1) 100.2%);
 }
 
 .box {
@@ -104,7 +150,7 @@ body {
 } */
 
 .pumpBtn {
-    height: 10vh;
+    height: 5vh;
     min-width: 10rem;
     display: flex;
     justify-content: space-around;
@@ -128,6 +174,50 @@ body {
 .pump:hover {
     background: rgba(4, 161, 255, 1);
     color: rgba(128, 128, 128, 1);
+}
+
+.map-card-container {
+    position: relative;
+    display: flex;
+    width: 20%;
+    height: 15rem;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.map-card {
+    width: 66%;
+    height: 88%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: .4rem;
+    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .18);
+    filter: grayscale(100%);
+    cursor: pointer;
+}
+
+.show {
+    min-width: 15rem;
+    min-height: 21rem;
+    background: rgba(255, 255, 255, 1);
+    position: absolute;
+    border-radius: .4rem;
+    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .18);
+    opacity: 0;
+    z-index: 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.mask {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 1);
+    position: absolute;
+    opacity: 0;
+    z-index: 2;
+    display: none;
 }
 
 @keyframes shadowWaveBlue {
@@ -181,10 +271,17 @@ body {
         height: 100%;
     }
     .pumpBtn {
-        height: 5vh;
+        margin-top: 2rem;
     }
     .show {
         min-width: 10rem;
         min-height: 15rem;
+    }
+    .map-container {
+        padding-top: 4rem;
+    }
+    .map-card-container {
+        width: 33%;
+        height: 5rem;
     }
 }
