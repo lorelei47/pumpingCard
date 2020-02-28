@@ -1,4 +1,5 @@
 (function(win) {
+    preload('src/card/', Cards);
     let cp = new CardPool(Cards);
 
     hamburgerEvent("hamburger-container");
@@ -153,6 +154,17 @@
                     }
                 }
             }
+        }
+    }
+
+    function preload(path, array) {
+        let imagesArray = array.map(function(item) {
+            return path + item.id + ".jpg";
+        });
+        let images = new Array()
+        for (let i = 0; i < imagesArray.length; i++) {
+            images[i] = new Image()
+            images[i].src = imagesArray[i]
         }
     }
 
