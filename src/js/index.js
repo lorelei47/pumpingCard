@@ -22,7 +22,7 @@
 
         let nodeList = mapBox.querySelectorAll('.map-card');
         for (let i = 0, len = nodeList.length; i < len; i++) {
-            nodeList[i].style.backgroundImage = "url('src/card/" + cardArray[i].id + ".jpg')";
+            nodeList[i].style.backgroundImage = "url('https://images-1257102766.cos.ap-guangzhou.myqcloud.com/%E6%B0%B4%E6%B5%92/" + cardArray[i].id + ".jpg')";
             let index = Cards.findIndex(item => item.id == cardArray[i].id);
             nodeList[i].setAttribute("level", Cards[index].level);
         }
@@ -43,7 +43,7 @@
         let nodeList = box.querySelectorAll('.back');
         for (let i = 0, len = nodeList.length; i < len; i++) {
             let cardId = cp.getRandomCardId();
-            nodeList[i].style.backgroundImage = "url('src/card/" + cardId + ".jpg')";
+            nodeList[i].style.backgroundImage = "url('https://images-1257102766.cos.ap-guangzhou.myqcloud.com/%E6%B0%B4%E6%B5%92/" + cardId + ".jpg')";
             let index = Cards.findIndex(item => item.id == cardId);
             nodeList[i].setAttribute("level", Cards[index].level);
         }
@@ -166,6 +166,7 @@
             images[i] = new Image()
             images[i].src = imagesArray[i]
         }
+        return images;
     }
 
     //添加css规则
