@@ -5,9 +5,9 @@ html {
 body {
     padding: 0;
     margin: 0;
-    height: 100vh;
+    /* height: 100vh; */
     position: relative;
-    display: flex;
+    /* display: flex; */
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -47,33 +47,34 @@ body {
 }
 
 .pump-container {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     position: relative;
-    display: none;
+    display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     background-image: radial-gradient( circle farthest-corner at 23.1% 64.6%, rgba(129, 125, 254, 1) 0%, rgba(111, 167, 254, 1) 90%);
+    z-index: 1;
 }
 
 .map-container {
     width: 100%;
-    padding-top: 5rem;
-    height: 100vh;
-    display: flex;
+    padding-top: 2rem;
+    /* height: 100vh; */
+    display: none;
     justify-content: space-around;
     align-items: center;
     background-image: linear-gradient( 0deg, rgba(247, 247, 247, 1) 23.8%, rgba(252, 221, 221, 1) 92%);
+    z-index: 1;
 }
 
 .map-box {
     display: flex;
-    height: 100vh;
+    /* height: 100vh; */
     width: 90vw;
     max-width: 1400px;
     flex-flow: row wrap;
-    z-index: 1;
 }
 
 .collect-container {
@@ -94,7 +95,6 @@ body {
     align-content: space-around;
     font-family: Helvetzica, Arial;
     color: #fff;
-    z-index: 1;
 }
 
 .card-container {
@@ -202,6 +202,9 @@ body {
     min-height: 21rem;
     background: rgba(255, 255, 255, 1);
     position: absolute;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: .4rem;
     box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .18);
     opacity: 0;
@@ -212,9 +215,10 @@ body {
 
 .mask {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: rgba(0, 0, 0, 1);
     position: absolute;
+    top: 0;
     opacity: 0;
     z-index: 2;
     display: none;
@@ -276,9 +280,6 @@ body {
     .show {
         min-width: 10rem;
         min-height: 15rem;
-    }
-    .map-container {
-        padding-top: 4rem;
     }
     .map-card-container {
         width: 33%;

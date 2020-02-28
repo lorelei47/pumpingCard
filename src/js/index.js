@@ -1,5 +1,4 @@
 (function(win) {
-    preload('src/card/', Cards);
     let cp = new CardPool(Cards);
 
     hamburgerEvent("hamburger-container");
@@ -26,12 +25,9 @@
             let index = Cards.findIndex(item => item.id == cardArray[i].id);
             nodeList[i].setAttribute("level", Cards[index].level);
         }
-        let item = document.getElementsByClassName('map-container');
+        let item = document.getElementsByClassName('map-card-container');
         for (let z = 0; z < item.length; z++) {
-            item[z].addEventListener("click", function() {
-                // enlargeCardEvent(this, '.map-card');
-                // setLevelShadow(this, '.map-card');
-            });
+            enlargeCardEvent(item[z], '.map-card');
         }
     }
 
@@ -143,6 +139,7 @@
         let hbg = document.querySelector('.' + className);
         let btn = hbg.querySelectorAll(".hamburger-item");
         for (let i = 0; i < btn.length; i++) {
+            (i == 0) ? btn[i].style.backgroundColor = "rgb(140, 224, 123)": "";
             btn[i].onclick = function() {
                 for (let j = 0; j < btn.length; j++) {
                     if (i == j) {
@@ -155,30 +152,5 @@
                 }
             }
         }
-    }
-
-    function preload(path, array) {
-        let imagesArray = array.map(function(item) {
-            return path + item.id + ".jpg";
-        });
-        let images = new Array()
-        for (let i = 0; i < imagesArray.length; i++) {
-            images[i] = new Image()
-            images[i].src = imagesArray[i]
-        }
-        return images;
-    }
-
-    //添加css规则
-    function addCSSRule(sheet, selector, rules, index) {
-        if ("insertRule" in sheet) {
-            sheet.insertRule(selector + "{" + rules + "}", index);
-        } else if ("addRule" in sheet) {
-            sheet.addRule(selector, rules, index);
-        }
-    }
-    //删除CSS规则
-    function delCSSRule(sheet) {
-        sheet.deleteRule(0)
     }
 })(window);
