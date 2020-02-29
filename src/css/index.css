@@ -14,7 +14,7 @@ body {
 }
 
 .hamburger-container {
-    position: absolute;
+    position: fixed;
     height: 1.5rem;
     width: 100vw;
     background: rgb(19, 113, 100);
@@ -50,7 +50,7 @@ body {
     width: 100vw;
     height: 100vh;
     position: relative;
-    display: flex;
+    display: none;
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -80,7 +80,7 @@ body {
 .collect-container {
     width: 100%;
     height: 100%;
-    display: none;
+    display: flex;
     background-image: linear-gradient( 109.6deg, rgba(204, 228, 247, 1) 11.2%, rgba(237, 246, 250, 1) 100.2%);
 }
 
