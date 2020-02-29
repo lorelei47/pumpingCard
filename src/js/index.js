@@ -105,19 +105,21 @@
         let showView = document.querySelector('.show');
         let maskView = document.querySelector('.mask');
         that.querySelector(className).onclick = function(e) {
-            showView.style.opacity = "1";
+            showView.style.display = "block";
             showView.style.zIndex = "3";
             showView.style.backgroundImage = this.style.backgroundImage;
             showView.style.animation = this.style.animation;
             maskView.style.opacity = "0.5"
             maskView.style.display = "block";
+            stop();
             stopBubble(e);
             document.onclick = function() {
-                showView.style.opacity = "0";
+                showView.style.display = "none";
                 showView.style.zIndex = "0";
                 maskView.style.opacity = "0.5"
                 maskView.style.display = 'none';　　　　　　
-                document.onclick = null;　
+                document.onclick = null;
+                move();
             }
         };
         showView.onclick = function(event) {
@@ -132,7 +134,20 @@
                 window.event.cancelBubble = true; //IE
             }
         }
+    }
+    //
 
+    //滚动限制
+    function stop() {
+        let mo = function(e) { passive: false; };
+        document.body.style.overflow = 'hidden';
+        document.addEventListener("touchmove", mo, false); //禁止页面滑动
+    }
+    //取消滚动限制
+    function move() {
+        let mo = function(e) { passive: false };
+        document.body.style.overflow = ''; //出现滚动条
+        document.removeEventListener("touchmove", mo, false);
     }
 
     function hamburgerEvent(className) {
