@@ -21,7 +21,7 @@
 
         let nodeList = mapBox.querySelectorAll('.map-card');
         for (let i = 0, len = nodeList.length; i < len; i++) {
-            nodeList[i].style.backgroundImage = "url('http://q6inprpbx.bkt.clouddn.com/" + cardArray[i].id + ".jpg')";
+            nodeList[i].style.backgroundImage = "url('" + Url + cardId + ".jpg')";
             let index = Cards.findIndex(item => item.id == cardArray[i].id);
             nodeList[i].setAttribute("level", Cards[index].level);
         }
@@ -39,7 +39,7 @@
         let nodeList = box.querySelectorAll('.back');
         for (let i = 0, len = nodeList.length; i < len; i++) {
             let cardId = cp.getRandomCardId();
-            nodeList[i].style.backgroundImage = "url('http://q6inprpbx.bkt.clouddn.com/" + cardId + ".jpg')";
+            nodeList[i].style.backgroundImage = "url('" + Url + cardId + ".jpg')";
             let index = Cards.findIndex(item => item.id == cardId);
             nodeList[i].setAttribute("level", Cards[index].level);
         }

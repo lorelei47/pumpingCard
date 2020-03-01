@@ -4,6 +4,8 @@
  * 橙卡: 16.63%
  * 红卡: 0.023%
  */
+const Url = "http://q6inprpbx.bkt.clouddn.com/";
+
 const Cards = [
     { id: 1, weight: 2, level: 2 },
     { id: 2, weight: 2, level: 2 },
