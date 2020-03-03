@@ -1,16 +1,51 @@
 (function(win) {
     let cp = new CardPool(Cards);
+    let money = new CollectData();
 
     hamburgerEvent("hamburger-container");
 
     document.querySelector('.pump:nth-of-type(1)').addEventListener('click', function() {
-        tenPump(1);
+        pumpEventListener(1);
     });
     document.querySelector('.pump:nth-of-type(2)').addEventListener('click', function() {
-        tenPump(10);
+        pumpEventListener(10);
     });
+    document.querySelector('.cell-3').onclick = function() {
+        money.init();
+        let box = document.querySelector('.box');
+        box.innerHTML = "";
+    };
 
     mapView(Cards);
+
+    function pumpEventListener(num) {
+        let nodeCard = document.querySelectorAll('.box .card-container');
+        if (nodeCard.length > 0 && (() => {
+                for (let z = 0; z < nodeCard.length; z++) {
+                    if (nodeCard[z].querySelector('.back').style.transform !== 'rotateY(0deg)') {
+                        return true;
+                    }
+                }
+                return false;
+            })()) {
+            let item = document.getElementsByClassName('card-container');
+            for (let z = 0; z < item.length; z++) {
+                enlargeCardEvent(item[z], '.back');
+                setLevelShadow(item[z], '.back');
+                item[z].querySelector('.cover').style.transform = 'rotatey(180deg)';
+                item[z].querySelector('.back').style.transform = 'rotatey(0deg)';
+            }
+        } else {
+            if (money.isEnoughMoney(num)) {
+                money.pumpCard(tenPump(num));
+                money.changeDom(num);
+            } else {
+                let box = document.querySelector('.box');
+                box.innerHTML = "";
+                alert('莫得钱抽卡了QAQ！');
+            }
+        }
+    }
 
     function mapView(cardArray) {
         if (!Array.isArray(cardArray)) {
@@ -21,7 +56,7 @@
 
         let nodeList = mapBox.querySelectorAll('.map-card');
         for (let i = 0, len = nodeList.length; i < len; i++) {
-            nodeList[i].style.backgroundImage = "url('" + Url + cardId + ".jpg')";
+            nodeList[i].style.backgroundImage = "url('" + Url + cardArray[i].id + ".jpg')";
             let index = Cards.findIndex(item => item.id == cardArray[i].id);
             nodeList[i].setAttribute("level", Cards[index].level);
         }
@@ -32,6 +67,7 @@
     }
 
     function tenPump(num) {
+        let cardArrayBuf = [];
         let box = document.querySelector('.box');
         box.innerHTML = "";
         box = createItem(box, num);
@@ -42,6 +78,7 @@
             nodeList[i].style.backgroundImage = "url('" + Url + cardId + ".jpg')";
             let index = Cards.findIndex(item => item.id == cardId);
             nodeList[i].setAttribute("level", Cards[index].level);
+            cardArrayBuf.push(cardId);
         }
         let item = document.getElementsByClassName('card-container');
         for (let z = 0; z < item.length; z++) {
@@ -52,6 +89,7 @@
                 this.querySelector('.back').style.transform = 'rotatey(0deg)';
             });
         }
+        return cardArrayBuf;
     }
 
     function createItem(node, num) {
@@ -135,7 +173,6 @@
             }
         }
     }
-    //
 
     //滚动限制
     function stop() {
@@ -148,6 +185,10 @@
         let mo = function(e) { passive: false };
         document.body.style.overflow = ''; //出现滚动条
         document.removeEventListener("touchmove", mo, false);
+    }
+
+    function initPump() {
+
     }
 
     function hamburgerEvent(className) {
