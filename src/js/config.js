@@ -4,7 +4,7 @@
  * 橙卡: 16.63%
  * 红卡: 0.023%
  */
-const Url = "http://q6inprpbx.bkt.clouddn.com/";
+const Url = "http://lorelei47.cn-gd.ufileos.com/%E6%B0%B4%E6%B5%92%2F";
 
 const Cards = [
     { id: 1, weight: 2, level: 2 },

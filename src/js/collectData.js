@@ -43,7 +43,7 @@ const CollectData = (function() {
         this.changeMap = function() {
             let mapCard = document.querySelectorAll('.map-card');
             for (let i = 0; i < mapCard.length; i++) {
-                let urlId = mapCard[i].style.backgroundImage.match(/com\/(\S*).jpg/)[1];
+                let urlId = mapCard[i].style.backgroundImage.match(/%E6%B0%B4%E6%B5%92%2F(\S*).jpg/)[1];
                 if (this.cardGet.indexOf(parseInt(urlId)) !== -1) {
                     mapCard[i].style.filter = "grayscale(0%)"
                 } else {
